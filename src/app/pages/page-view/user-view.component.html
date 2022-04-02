@@ -1,0 +1,35 @@
+<div class="card-view">
+  <mat-card>
+    <mat-card-title>Usuário</mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <table>
+        <tr>
+          <td class="user-type">Nome:</td>
+          <td class="user-info">{{ user?.name | uppercase }}</td>
+        </tr>
+        <tr>
+          <td class="user-type">Sobrenome:</td>
+          <td class="user-info">{{ user?.apellido1 | uppercase }}</td>
+        </tr>
+        <tr>
+          <td class="user-type">Sobrenome 2:</td>
+          <td class="user-info">{{ user?.apellido2 | uppercase }}</td>
+        </tr>
+        <tr>
+          <td class="user-type">Telefone:</td>
+          <td class="user-info">+{{ user?.telephone | telephone }}</td>
+        </tr>
+        <tr>
+          <td class="user-type">Login:</td>
+          <td class="user-info">{{ user?.login }}</td>
+        </tr>
+        <tr>
+          <td class="user-type">Status:</td>
+          <td class="user-info status user-active" *ngIf="user?.status === 'Ativo'">{{ user?.status | uppercase }}</td>
+          <td class="user-info status user-inactive" *ngIf="user?.status !== 'Ativo'">{{ user?.status | uppercase }}</td>
+        </tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>

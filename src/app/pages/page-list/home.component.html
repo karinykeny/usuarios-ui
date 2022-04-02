@@ -1,0 +1,55 @@
+<mat-card>
+  <mat-card-title>Lista de Usuários</mat-card-title>
+  <mat-card-content>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nome</th>
+        <td mat-cell *matCellDef="let user">{{ user.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="apellido1">
+        <th mat-header-cell *matHeaderCellDef>Sobrenome</th>
+        <td mat-cell *matCellDef="let user"> {{ user.apellido1 }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="apellido2">
+        <th mat-header-cell *matHeaderCellDef>Sobrenome 2</th>
+        <td mat-cell *matCellDef="let user"> {{ user.apellido2 }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let user"
+          [ngClass]="user.status === 'Ativo' ? 'status user-active' : 'status user-inactive'">{{ user.status }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="login">
+        <th mat-header-cell *matHeaderCellDef>Login</th>
+        <td mat-cell *matCellDef="let user">{{ user.login }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="acao">
+        <th mat-header-cell *matHeaderCellDef>Ação</th>
+        <td mat-cell *matCellDef="let user">
+          <button mat-icon-button class="example-icon" (click)="redirectView(user)">
+            <mat-icon><img src="assets/images/mostrar-25.png"></mat-icon>
+          </button>
+          <button mat-icon-button class="example-icon" (click)="redirectEdit(user)">
+            <mat-icon><img src="assets/images/editar-25.png"></mat-icon>
+          </button>
+          <button mat-icon-button class="example-icon" (click)="getModal(user)">
+            <mat-icon><img src="assets/images/excluir-25.png"></mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Selecione">
+    </mat-paginator>
+
+  </mat-card-content>
+</mat-card>
